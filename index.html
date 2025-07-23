@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sinh viên</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>Quản lý sinh viên</h1>
+    </div>
+
+    <div class="container">
+        <!-- Mobile tabs -->
+        <div class="mobile-tabs">
+            <button class="tab-button active" data-tab="form">Thêm sinh viên</button>
+            <button class="tab-button" data-tab="list">Danh sách</button>
+        </div>
+
+        <div class="main-content">
+            <!-- Form section -->
+            <div class="form-section">
+                <div class="section-title">Thêm sinh viên mới</div>
+                
+                <form id="studentForm">
+                    <div class="form-group">
+                        <label for="studentId">Mã sinh viên:</label>
+                        <input type="text" id="studentId" name="studentId" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fullName">Họ và tên:</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gender">Giới tính:</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">-- Chọn giới tính --</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="birthDate">Ngày sinh:</label>
+                        <input type="date" id="birthDate" name="birthDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">Ghi chú:</label>
+                        <textarea id="notes" name="notes" rows="3"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Thêm sinh viên</button>
+                </form>
+            </div>
+
+            <!-- Table section -->
+            <div class="table-section">
+                <div class="table-title">Danh sách sinh viên</div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Mã SV</th>
+                                <th>Họ tên</th>
+                                <th>Email</th>
+                                <th>Giới tính</th>
+                                <th>Ngày sinh</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>SV01</td>
+                                <td>Nguyễn Văn A</td>
+                                <td>a@gmail.com</td>
+                                <td>Nam</td>
+                                <td>15-2-2002</td>
+                                <td>Lớp trưởng</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>SV02</td>
+                                <td>Trần Thị B</td>
+                                <td>b@gmail.com</td>
+                                <td>Nữ</td>
+                                <td>30-06-2002</td>
+                                <td>Học giỏi</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const formSection = document.querySelector('.form-section');
+        const tableSection = document.querySelector('.table-section');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                const tab = this.dataset.tab;
+                if (tab === 'form') {
+                    formSection.classList.remove('hidden');
+                    tableSection.classList.add('hidden');
+                } else {
+                    formSection.classList.add('hidden');
+                    tableSection.classList.remove('hidden');
+                }
+            });
+        });
+
+        document.getElementById('studentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Sinh viên đã được thêm thành công!');
+            this.reset();
+            if (window.innerWidth <= 768) {
+                document.querySelector('[data-tab="list"]').click();
+            }
+        });
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                formSection.classList.remove('hidden');
+                tableSection.classList.remove('hidden');
+            }
+        });
+
+        if (window.innerWidth <= 768) {
+            tableSection.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

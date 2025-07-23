@@ -1,0 +1,185 @@
+/* Reset & base style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Header */
+.header {
+    background-color: #0066cc;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.6rem;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem;
+}
+
+/* Tabs on mobile */
+.mobile-tabs {
+    display: none;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.tab-button {
+    width: 50%;
+    padding: 1rem;
+    border: none;
+    font-weight: bold;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.tab-button.active {
+    background-color: #0066cc;
+    color: white;
+}
+
+/* Layout */
+.main-content {
+    display: flex;
+    gap: 2rem;
+}
+
+/* Form Section */
+.form-section {
+    flex: 1;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+
+.section-title {
+    background: #28a745;
+    color: white;
+    font-weight: bold;
+    padding: 0.75rem;
+    margin: -1.5rem -1.5rem 1rem -1.5rem;
+    border-radius: 5px 5px 0 0;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Table Section */
+.table-section {
+    flex: 2;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.table-title {
+    background-color: #6c757d;
+    color: white;
+    padding: 0.75rem 1rem;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 0.5rem;
+    }
+
+    .mobile-tabs {
+        display: flex;
+    }
+
+    .main-content {
+        flex-direction: column;
+    }
+
+    .form-section,
+    .table-section {
+        margin-bottom: 1rem;
+    }
+
+    .form-section.hidden,
+    .table-section.hidden {
+        display: none;
+    }
+}
